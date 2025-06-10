@@ -8,16 +8,25 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Abelha extends Actor
 {
-    int vidas;
-    int score;
-    int PONTOS=100;
+  private  int vidas;
+  private  int score;
+  private  int PONTOS=100;
+  private int indice;
+  private GreenfootImage imgs[];
 /**
  * Constructor da Classe Abelha
  */
     public Abelha(){
         vidas=3;
         score=0;
-        
+        //GreenfootImage img= new GreenfootImage("bee01.png");
+        //setImage(img);
+        indice=0;
+        imgs=new GreenfootImage[4];
+        for (int i=0;i<4;i++){
+            imgs[i]=new GreenfootImage("bee0"+(i+1)+".png");
+        }
+        setImage(imgs[indice]);
     }
     
     /**
@@ -37,7 +46,7 @@ public class Abelha extends Actor
     verificarPosicao();
     capturarMosca();
   serCapturadopelaAranha();
-  
+  animarAbelha();
     }
     /**
      * Método que verifica posição da Abelha.
@@ -99,7 +108,7 @@ public class Abelha extends Actor
          atualizarScore();
          int posX=Greenfoot.getRandomNumber(getWorld().getWidth())+1;
          int posY=Greenfoot.getRandomNumber(getWorld().getHeight())+1;
-         Mosca mosca = new Mosca();
+         Mosca mosca = new Mosca(Greenfoot.getRandomNumber(3)+1,Greenfoot.getRandomNumber(360));
          getWorld().addObject(mosca,posX,posY);     
          
      }
@@ -127,5 +136,8 @@ public class Abelha extends Actor
         getWorld().showText("Score:"+score,100,10);
     }
     
- 
+ public void animarAbelha(){
+     indice=(indice+1) %4;
+     setImage(imgs[indice]);
+ }
 }
