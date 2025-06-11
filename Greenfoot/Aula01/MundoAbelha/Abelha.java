@@ -9,8 +9,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Abelha extends Actor
 {
   private  int vidas;
-  private  int score;
-  private  int PONTOS=100;
   private int indice;
   private GreenfootImage imgs[];
 /**
@@ -18,7 +16,7 @@ public class Abelha extends Actor
  */
     public Abelha(){
         vidas=3;
-        score=0;
+        
         //GreenfootImage img= new GreenfootImage("bee01.png");
         //setImage(img);
         indice=0;
@@ -47,6 +45,7 @@ public class Abelha extends Actor
     capturarMosca();
   serCapturadopelaAranha();
   animarAbelha();
+  atualizarVidas();
     }
     /**
      * Método que verifica posição da Abelha.
@@ -104,8 +103,8 @@ public class Abelha extends Actor
     public void capturarMosca(){
      if(isTouching(Mosca.class)){
          removeTouching(Mosca.class);
-         Greenfoot.playSound("slurp.wav");
-         atualizarScore();
+    
+
          int posX=Greenfoot.getRandomNumber(getWorld().getWidth())+1;
          int posY=Greenfoot.getRandomNumber(getWorld().getHeight())+1;
          Mosca mosca = new Mosca(Greenfoot.getRandomNumber(3)+1,Greenfoot.getRandomNumber(360));
@@ -131,13 +130,17 @@ public class Abelha extends Actor
         }
     }
     
-    public void atualizarScore(){
-        score+=PONTOS;
-        getWorld().showText("Score:"+score,100,10);
-    }
+    //public void atualizarScore(){
+      //  score+=PONTOS;
+        //getWorld().showText("Score:"+score,100,10);
+    //}
     
  public void animarAbelha(){
      indice=(indice+1) %4;
      setImage(imgs[indice]);
- }
+}
+
+public void atualizarVidas(){
+    getWorld().showText("vidas:",100, 10);
+}
 }

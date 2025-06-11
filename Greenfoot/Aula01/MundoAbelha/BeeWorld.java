@@ -8,7 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class BeeWorld extends World
 {
-
+  private  int score;
+  private final int PONTOS=100;
+  private Abelha abelha;
+    
+    
     /**
      * Constructor for objects of class BeeWorld.
      * 
@@ -18,6 +22,8 @@ public class BeeWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1); 
         prepare();
+        score++;
+    
     }
     
     /**
@@ -40,5 +46,15 @@ public class BeeWorld extends World
             addObject(mosca,posX,posY);
 
         }
+        TextoColorido txt = new TextoColorido("Mensagem Teste",500,50,25,Color.BLUE,Color.GRAY);
+        addObject(txt,500, 50);
+    }
+    public void updateScore(){
+        score+= PONTOS;
+        showText("Score:"+score,100,10);
+    }
+    
+    public Abelha getAbelha(){
+        return abelha;
     }
 }
