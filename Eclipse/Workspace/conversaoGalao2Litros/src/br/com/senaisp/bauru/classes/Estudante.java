@@ -4,6 +4,25 @@ public class Estudante {
 	//Fields ou campos ou variáveis de instância
 	private String nome;
 	private int ra;
+	private double nota;
+	private boolean ehFumante;
+	public Estudante() {
+		setNome("Sem nome");
+		ra=0;
+		nota=0.0;
+		ehFumante=false;
+		
+	}
+	
+	public Estudante(int ra, String nome) {
+		this.nome=nome;
+	
+	setRa(ra);
+	setNome(nome);
+	nota=0;
+	ehFumante=false;
+	
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -28,15 +47,19 @@ public class Estudante {
 	public void setEhFumante(boolean ehFumante) {
 		this.ehFumante = ehFumante;
 	}
-	private double nota;
-	private boolean ehFumante;
-	//Constructor
-	public Estundante() {
-		nome = "Sem nome";
-		ra=0;
-		nota=0.0.;
-		ehFumante=false;
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Nome:"+ getNome()+ "\n"+
+			"Ra :"+	getRa()+"\n"+
+	 "Nota:" +	getNota()+"\n"+
+		"Fumante:" +		isEhFumante();
 	}
-	
+
+
+
+	public void setEnFumante(boolean ehFumante) {
+		this.ehFumante = ehFumante;
+	}
 
 }
